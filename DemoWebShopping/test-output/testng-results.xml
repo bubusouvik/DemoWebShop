@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-08-21T02:39:15 IST" name="Default suite" finished-at="2025-08-21T02:39:27 IST" duration-ms="12182">
+    <groups>
+    </groups>
+    <test started-at="2025-08-21T02:39:15 IST" name="Default test" finished-at="2025-08-21T02:39:27 IST" duration-ms="12182">
+      <class name="com.ecommerce.register.EcommerceTest">
+        <test-method is-config="true" signature="launchBrowser()[pri:0, instance:com.ecommerce.register.EcommerceTest@6f03482]" started-at="2025-08-21T02:39:15 IST" name="launchBrowser" finished-at="2025-08-21T02:39:21 IST" duration-ms="6249" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="registerApp()[pri:0, instance:com.ecommerce.register.EcommerceTest@6f03482]" started-at="2025-08-21T02:39:21 IST" name="registerApp" finished-at="2025-08-21T02:39:24 IST" duration-ms="3103" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- registerApp -->
+        <test-method signature="navigateToProductlist()[pri:0, instance:com.ecommerce.register.EcommerceTest@6f03482]" started-at="2025-08-21T02:39:24 IST" name="navigateToProductlist" finished-at="2025-08-21T02:39:26 IST" depends-on-methods="com.ecommerce.register.EcommerceTest.registerApp" duration-ms="1810" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToProductlist -->
+        <test-method signature="addToCart()[pri:0, instance:com.ecommerce.register.EcommerceTest@6f03482]" started-at="2025-08-21T02:39:26 IST" name="addToCart" finished-at="2025-08-21T02:39:27 IST" depends-on-methods="com.ecommerce.register.EcommerceTest.navigateToProductlist" duration-ms="981" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addToCart -->
+      </class> <!-- com.ecommerce.register.EcommerceTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
