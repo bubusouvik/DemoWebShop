@@ -5,6 +5,7 @@
     <classes>
       <class name="com.ecommerce.register.EcommerceTest">
         <methods>
+          <include name="checkOut"/>
           <include name="addToCart"/>
           <include name="navigateToProductlist"/>
           <include name="launchBrowser"/>

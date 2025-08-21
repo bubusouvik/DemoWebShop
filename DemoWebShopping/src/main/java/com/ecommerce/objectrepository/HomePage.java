@@ -17,6 +17,9 @@ public class HomePage {
 
 	@FindBy(xpath = "(//a[contains(text(),'Electronics')])[1]")
 	private WebElement electronics;
+	
+	@FindBy(linkText = "Shopping cart")
+	private WebElement shoppingCart;
 
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
@@ -33,6 +36,10 @@ public class HomePage {
 
 	public WebElement getElectronics() {
 		return electronics;
+	}
+	
+	public WebElement getshoppingCart() {
+		return shoppingCart;
 	}
 
 }

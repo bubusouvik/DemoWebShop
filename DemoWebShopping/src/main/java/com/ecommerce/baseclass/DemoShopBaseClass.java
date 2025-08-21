@@ -13,21 +13,20 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.BeforeClass;
 
+import com.ecommerce.genericutility.JsonFileUtility;
 import com.ecommerce.webdriverutility.DemoShopWebdriverUtility;
 
 public class DemoShopBaseClass {
 
 	DemoShopWebdriverUtility webutility = new DemoShopWebdriverUtility();
+	JsonFileUtility fileutility = new JsonFileUtility();
 	public WebDriver driver = null;
 
 	@BeforeClass
 	public void launchBrowser() throws FileNotFoundException, IOException, ParseException {
-
-		JSONParser parser = new JSONParser();
-		Object object = parser.parse(new FileReader("./testappdata/commondata.json"));
-		JSONObject jsonobj = (JSONObject) object;
-		String browser = jsonobj.get("browser").toString();
-		String url = jsonobj.get("url").toString();
+		String status = "common";
+		String browser = fileutility.getJSONdata("browser", status);
+		String url = fileutility.getJSONdata("url", status);
 		if (browser.equals("chrome")) {
 			driver = new ChromeDriver();
 		} else if (browser.equals("firefox")) {
