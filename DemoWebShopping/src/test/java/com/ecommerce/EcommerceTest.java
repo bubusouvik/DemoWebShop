@@ -1,4 +1,4 @@
-package com.ecommerce.register;
+package com.ecommerce;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,6 +7,7 @@ import org.apache.poi.EncryptedDocumentException;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.ecommerce.baseclass.DemoShopBaseClass;
@@ -14,8 +15,10 @@ import com.ecommerce.genericutility.ExcelFileUtility;
 import com.ecommerce.genericutility.FileUtility;
 import com.ecommerce.genericutility.JsonFileUtility;
 import com.ecommerce.objectrepository.CartPage;
+import com.ecommerce.objectrepository.CheckoutPage;
 import com.ecommerce.objectrepository.ElectronicsPage;
 import com.ecommerce.objectrepository.HomePage;
+import com.ecommerce.objectrepository.LoginPage;
 import com.ecommerce.objectrepository.RegisterPage;
 import com.ecommerce.webdriverutility.DemoShopWebdriverUtility;
 
@@ -28,6 +31,8 @@ public class EcommerceTest extends DemoShopBaseClass {
 	String sheetname = "camera";
 	String product = "Digital SLR Camera 12.2 Mpixel";
 	String innerProduct = "Digital SLR Camera - Black";
+	String user_username = null;
+	String user_password = null;
 
 	@Test
 	public void registerApp() throws FileNotFoundException, IOException, ParseException, InterruptedException {
@@ -40,14 +45,22 @@ public class EcommerceTest extends DemoShopBaseClass {
 		String confirmpassword = fileutility.getJSONdata("confirmpassword", status);
 		HomePage home = new HomePage(driver);
 		RegisterPage register = new RegisterPage(driver);
-
 		home.getRegister().click();
 		register.getRegister(gender, firstname, lastname, email, password, confirmpassword);
-		Thread.sleep(1000);
-		home.getcontinueBtn().click();
+		user_username = email;
+		user_password = password;
+		home.getLogout().click();
 	}
 
 	@Test(dependsOnMethods = "registerApp")
+	public void loginToApp() throws FileNotFoundException, IOException, ParseException, InterruptedException {
+		HomePage home = new HomePage(driver);
+		home.getLogin().click();
+		LoginPage login = new LoginPage(driver);
+		login.loginToApp(user_username, user_password);
+	}
+
+	@Test(dependsOnMethods = "loginToApp")
 	public void navigateToProductlist() throws EncryptedDocumentException, IOException {
 		HomePage home = new HomePage(driver);
 		ElectronicsPage electronics = new ElectronicsPage(driver);
@@ -66,6 +79,7 @@ public class EcommerceTest extends DemoShopBaseClass {
 	public void addToCart() throws EncryptedDocumentException, IOException, InterruptedException {
 		String productName = efileutility.getProductFromExcel("camera", "Digital SLR Camera 12.2 Mpixel");
 		Assert.assertEquals(productName, product);
+
 		if (productName.equals(product)) {
 			driver.findElement(By.xpath("//a[contains(text(),'" + productName + "')]")).click();
 			String innerproductInfo = efileutility.getProductFromCell(sheetname, productName, innerProduct);
@@ -75,20 +89,46 @@ public class EcommerceTest extends DemoShopBaseClass {
 				driver.findElement(By.xpath("//div[contains(text(),'" + innerproductInfo
 						+ "')]/following-sibling::div[@class='add-to-cart']/descendant::input[@value='Add to cart']"))
 						.click();
-				Thread.sleep(1200);
+				Thread.sleep(1500);
 			}
 
 		}
 	}
 
 	@Test(dependsOnMethods = "addToCart")
-	public void checkOut() {
+	public void checkOut() throws FileNotFoundException, IOException, ParseException, InterruptedException {
+		String status = "register";
 		HomePage home = new HomePage(driver);
 		home.getshoppingCart().click();
 		CartPage cart = new CartPage(driver);
 		String dropdownValue = webUtility.selectDropdown(cart.getCountryDropdown(), "India");
 		cart.addToCheckout(dropdownValue);
+		CheckoutPage checkout = new CheckoutPage(driver);
+		checkout.addcheckOut("India", fileutility.getJSONdata("city", status),
+				fileutility.getJSONdata("address1", status), fileutility.getJSONdata("address2", status),
+				fileutility.getJSONdata("postalcode", status), fileutility.getJSONdata("mobileno", status));
+		Thread.sleep(1000);
+		webUtility.scrollToElement(driver, checkout.getcontinueBtnsecond());
+		checkout.getcontinueBtnsecond().click();
+		Thread.sleep(1000);
+		checkout.getnextDayAir().click();
+		checkout.getcontinueBtnThird().click();
+		Thread.sleep(1000);
+		checkout.getcontinueBtnFour().click();
+		Thread.sleep(1000);
+		checkout.getcontinueBtnFive().click();
+		Thread.sleep(1500);
+		webUtility.scrollByAmount(driver, 500);
+		checkout.getconfirmBtn().click();
+		Thread.sleep(2000);
+		webUtility.takecaptureImage(driver);
 
+	}
+
+	@Test(dependsOnMethods = "checkOut")
+	public void logoutApp() {
+		HomePage home = new HomePage(driver);
+		home.getLogout().click();
 	}
 
 }

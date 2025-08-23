@@ -12,12 +12,18 @@ public class HomePage {
 	@FindBy(linkText = "Register")
 	private WebElement registerLink;
 
+	@FindBy(xpath = "//a[@class='ico-login']")
+	private WebElement loginLink;
+
+	@FindBy(xpath = "//a[@class='ico-logout']")
+	private WebElement logout;
+
 	@FindBy(xpath = "//input[@value='Continue']")
 	private WebElement continueBtn;
 
 	@FindBy(xpath = "(//a[contains(text(),'Electronics')])[1]")
 	private WebElement electronics;
-	
+
 	@FindBy(linkText = "Shopping cart")
 	private WebElement shoppingCart;
 
@@ -30,6 +36,10 @@ public class HomePage {
 		return registerLink;
 	}
 
+	public WebElement getLogin() {
+		return loginLink;
+	}
+
 	public WebElement getcontinueBtn() {
 		return continueBtn;
 	}
@@ -37,9 +47,13 @@ public class HomePage {
 	public WebElement getElectronics() {
 		return electronics;
 	}
-	
+
 	public WebElement getshoppingCart() {
 		return shoppingCart;
+	}
+
+	public WebElement getLogout() {
+		return logout;
 	}
 
 }

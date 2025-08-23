@@ -3,15 +3,18 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.ecommerce.register.EcommerceTest">
+      <class name="com.ecommerce.EcommerceTest">
         <methods>
-          <include name="checkOut"/>
+          <include name="logoutApp"/>
+          <include name="loginToApp"/>
           <include name="addToCart"/>
+          <include name="checkOut"/>
+          <include name="registerApp"/>
           <include name="navigateToProductlist"/>
           <include name="launchBrowser"/>
-          <include name="registerApp"/>
+          <include name="closeBrowser"/>
         </methods>
-      </class> <!-- com.ecommerce.register.EcommerceTest -->
+      </class> <!-- com.ecommerce.EcommerceTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

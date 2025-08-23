@@ -4,5 +4,10 @@
 	"lastname": "Sen",
 	"email": "rahul60@gmail.com",
 	"password": "123456",
-	"confirmpassword": "123456"
+	"confirmpassword": "123456",
+	"city": "Bangalore",
+	"address1": "Marathalli",
+	"address2": "Kathreguppe",
+	"postalcode": 5600070,
+	"mobileno": 8387894584
 }

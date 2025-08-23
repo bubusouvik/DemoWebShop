@@ -24,8 +24,27 @@ public class CheckoutPage {
 
 	@FindBy(id = "BillingNewAddress_PhoneNumber")
 	private WebElement phoneNumber;
+
+	@FindBy(xpath = "(//input[@title='Continue'])[1]")
+	private WebElement continueBtn;
+
+	@FindBy(xpath = "(//input[@title='Continue'])[2]")
+	private WebElement continueBtnsecond;
+
+	@FindBy(xpath = "//input[@id='shippingoption_1']")
+	private WebElement nextDayAir;
+
+	@FindBy(xpath = "(//input[@value='Continue'])[3]")
+	private WebElement continueBtnThird;
+
+	@FindBy(xpath = "(//input[@value='Continue'])[4]")
+	private WebElement continueBtnFour;
+
+	@FindBy(xpath = "(//input[@value='Continue'])[5]")
+	private WebElement continueBtnFive;
 	
-	
+	@FindBy(xpath = "//input[@value='Confirm']")
+	private WebElement confirmBtn;
 
 	public CheckoutPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -54,15 +73,44 @@ public class CheckoutPage {
 	public WebElement getphoneNumber() {
 		return phoneNumber;
 	}
+
+	public WebElement getcontinueBtn() {
+		return continueBtn;
+	}
+
+	public WebElement getcontinueBtnsecond() {
+		return continueBtnsecond;
+	}
+
+	public WebElement getnextDayAir() {
+		return nextDayAir;
+	}
+
+	public WebElement getcontinueBtnThird() {
+		return continueBtnThird;
+	}
+
+	public WebElement getcontinueBtnFour() {
+		return continueBtnFour;
+	}
+
+	public WebElement getcontinueBtnFive() {
+		return continueBtnFive;
+	}
 	
-	public void addcheckOut(String country, String city, String address1, String address2, String zip, double phone) {
+	public WebElement getconfirmBtn() {
+		return confirmBtn;
+	}
+
+	public void addcheckOut(String country, String city, String address1, String address2, String zip, String phone) {
 		getbillingCountry().sendKeys(country);
 		getbillingCity().sendKeys(city);
 		getBilling_Address1().sendKeys(address1);
 		getBilling_Address2().sendKeys(address2);
 		getzipPostalCode().sendKeys(zip);
 		getphoneNumber().sendKeys(phone);
-		
+		getcontinueBtn().click();
+
 	}
 
 }

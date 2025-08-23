@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-08-21T16:09:19 IST" name="Default suite" finished-at="2025-08-21T16:09:37 IST" duration-ms="17739">
+  <suite started-at="2025-08-23T11:57:13 IST" name="Default suite" finished-at="2025-08-23T11:57:45 IST" duration-ms="31120">
     <groups>
     </groups>
-    <test started-at="2025-08-21T16:09:19 IST" name="Default test" finished-at="2025-08-21T16:09:37 IST" duration-ms="17739">
-      <class name="com.ecommerce.register.EcommerceTest">
-        <test-method is-config="true" signature="launchBrowser()[pri:0, instance:com.ecommerce.register.EcommerceTest@3b0090a4]" started-at="2025-08-21T16:09:19 IST" name="launchBrowser" finished-at="2025-08-21T16:09:27 IST" duration-ms="7551" status="PASS">
+    <test started-at="2025-08-23T11:57:13 IST" name="Default test" finished-at="2025-08-23T11:57:45 IST" duration-ms="31120">
+      <class name="com.ecommerce.EcommerceTest">
+        <test-method is-config="true" signature="launchBrowser()[pri:0, instance:com.ecommerce.EcommerceTest@4116aac9]" started-at="2025-08-23T11:57:13 IST" name="launchBrowser" finished-at="2025-08-23T11:57:19 IST" duration-ms="6011" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="registerApp()[pri:0, instance:com.ecommerce.register.EcommerceTest@3b0090a4]" started-at="2025-08-21T16:09:27 IST" name="registerApp" finished-at="2025-08-21T16:09:31 IST" duration-ms="3690" status="PASS">
+        <test-method signature="registerApp()[pri:0, instance:com.ecommerce.EcommerceTest@4116aac9]" started-at="2025-08-23T11:57:19 IST" name="registerApp" finished-at="2025-08-23T11:57:22 IST" duration-ms="2296" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- registerApp -->
-        <test-method signature="navigateToProductlist()[pri:0, instance:com.ecommerce.register.EcommerceTest@3b0090a4]" started-at="2025-08-21T16:09:31 IST" name="navigateToProductlist" finished-at="2025-08-21T16:09:33 IST" depends-on-methods="com.ecommerce.register.EcommerceTest.registerApp" duration-ms="2212" status="PASS">
+        <test-method signature="loginToApp()[pri:0, instance:com.ecommerce.EcommerceTest@4116aac9]" started-at="2025-08-23T11:57:22 IST" name="loginToApp" finished-at="2025-08-23T11:57:23 IST" depends-on-methods="com.ecommerce.EcommerceTest.registerApp" duration-ms="1223" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginToApp -->
+        <test-method signature="navigateToProductlist()[pri:0, instance:com.ecommerce.EcommerceTest@4116aac9]" started-at="2025-08-23T11:57:23 IST" name="navigateToProductlist" finished-at="2025-08-23T11:57:25 IST" depends-on-methods="com.ecommerce.EcommerceTest.loginToApp" duration-ms="1871" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- navigateToProductlist -->
-        <test-method signature="addToCart()[pri:0, instance:com.ecommerce.register.EcommerceTest@3b0090a4]" started-at="2025-08-21T16:09:33 IST" name="addToCart" finished-at="2025-08-21T16:09:35 IST" depends-on-methods="com.ecommerce.register.EcommerceTest.navigateToProductlist" duration-ms="2506" status="PASS">
+        <test-method signature="addToCart()[pri:0, instance:com.ecommerce.EcommerceTest@4116aac9]" started-at="2025-08-23T11:57:25 IST" name="addToCart" finished-at="2025-08-23T11:57:27 IST" depends-on-methods="com.ecommerce.EcommerceTest.navigateToProductlist" duration-ms="2397" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- addToCart -->
-        <test-method signature="checkOut()[pri:0, instance:com.ecommerce.register.EcommerceTest@3b0090a4]" started-at="2025-08-21T16:09:35 IST" name="checkOut" finished-at="2025-08-21T16:09:37 IST" depends-on-methods="com.ecommerce.register.EcommerceTest.addToCart" duration-ms="1746" status="PASS">
+        <test-method signature="checkOut()[pri:0, instance:com.ecommerce.EcommerceTest@4116aac9]" started-at="2025-08-23T11:57:27 IST" name="checkOut" finished-at="2025-08-23T11:57:41 IST" depends-on-methods="com.ecommerce.EcommerceTest.addToCart" duration-ms="13302" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkOut -->
-      </class> <!-- com.ecommerce.register.EcommerceTest -->
+        <test-method signature="logoutApp()[pri:0, instance:com.ecommerce.EcommerceTest@4116aac9]" started-at="2025-08-23T11:57:41 IST" name="logoutApp" finished-at="2025-08-23T11:57:42 IST" depends-on-methods="com.ecommerce.EcommerceTest.checkOut" duration-ms="983" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logoutApp -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.ecommerce.EcommerceTest@4116aac9]" started-at="2025-08-23T11:57:42 IST" name="closeBrowser" finished-at="2025-08-23T11:57:45 IST" duration-ms="2981" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- com.ecommerce.EcommerceTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

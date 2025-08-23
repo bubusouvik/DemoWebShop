@@ -32,9 +32,11 @@ public class CartPage {
 		return checkoutbtn;
 	}
 
-	public void addToCheckout(String dropdownvalue) {
+	public void addToCheckout(String dropdownvalue) throws InterruptedException {
 		getCountryDropdown().sendKeys(dropdownvalue);
+		Thread.sleep(1500);
 		getTermsofservice().click();
 		getCheckoutBtn().click();
+		
 	}
 }
