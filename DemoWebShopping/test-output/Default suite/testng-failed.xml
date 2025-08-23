@@ -9,8 +9,8 @@
           <include name="loginToApp"/>
           <include name="addToCart"/>
           <include name="checkOut"/>
-          <include name="registerApp"/>
           <include name="navigateToProductlist"/>
+          <include name="registerApp"/>
           <include name="launchBrowser"/>
           <include name="closeBrowser"/>
         </methods>

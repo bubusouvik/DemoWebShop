@@ -5,9 +5,10 @@ import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.ecommerce.baseclass.DemoShopBaseClass;
@@ -24,16 +25,27 @@ import com.ecommerce.webdriverutility.DemoShopWebdriverUtility;
 
 public class EcommerceTest extends DemoShopBaseClass {
 
+	// excel file utility
 	ExcelFileUtility efileutility = new ExcelFileUtility();
+
+	// JSON utility
 	JsonFileUtility fileutility = new JsonFileUtility();
+
+	// WebDriver utility
 	DemoShopWebdriverUtility webUtility = new DemoShopWebdriverUtility();
+
+	// java methods
 	FileUtility file = new FileUtility();
+
+	// verification
 	String sheetname = "camera";
 	String product = "Digital SLR Camera 12.2 Mpixel";
 	String innerProduct = "Digital SLR Camera - Black";
+
 	String user_username = null;
 	String user_password = null;
 
+	// registration to application
 	@Test
 	public void registerApp() throws FileNotFoundException, IOException, ParseException, InterruptedException {
 		String status = "register";
@@ -52,6 +64,7 @@ public class EcommerceTest extends DemoShopBaseClass {
 		home.getLogout().click();
 	}
 
+	// login to application
 	@Test(dependsOnMethods = "registerApp")
 	public void loginToApp() throws FileNotFoundException, IOException, ParseException, InterruptedException {
 		HomePage home = new HomePage(driver);
@@ -60,6 +73,7 @@ public class EcommerceTest extends DemoShopBaseClass {
 		login.loginToApp(user_username, user_password);
 	}
 
+	// navigate to product list from home page
 	@Test(dependsOnMethods = "loginToApp")
 	public void navigateToProductlist() throws EncryptedDocumentException, IOException {
 		HomePage home = new HomePage(driver);
@@ -75,6 +89,7 @@ public class EcommerceTest extends DemoShopBaseClass {
 
 	}
 
+	// single product added into cart
 	@Test(dependsOnMethods = "navigateToProductlist")
 	public void addToCart() throws EncryptedDocumentException, IOException, InterruptedException {
 		String productName = efileutility.getProductFromExcel("camera", "Digital SLR Camera 12.2 Mpixel");
@@ -95,6 +110,7 @@ public class EcommerceTest extends DemoShopBaseClass {
 		}
 	}
 
+	// add to cart to checkout
 	@Test(dependsOnMethods = "addToCart")
 	public void checkOut() throws FileNotFoundException, IOException, ParseException, InterruptedException {
 		String status = "register";
@@ -125,6 +141,7 @@ public class EcommerceTest extends DemoShopBaseClass {
 
 	}
 
+	// logout to application
 	@Test(dependsOnMethods = "checkOut")
 	public void logoutApp() {
 		HomePage home = new HomePage(driver);
